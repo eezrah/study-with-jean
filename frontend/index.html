@@ -10,7 +10,7 @@
 
     <meta
             name="theme-color"
-            content="#718466"
+            content="#9caf88"
     >
 
     <meta
@@ -22,11 +22,11 @@
 
     <link
             rel="stylesheet"
-            href="./styles.css"
+            href="./styles.css?v=20260922-3"
     >
 
     <script
-            src="./app.js"
+            src="./app.js?v=20260922-3"
             defer
     ></script>
 </head>
@@ -49,8 +49,15 @@
     </header>
 
     <section class="hero">
-        <div class="hero-decoration hero-decoration-one"></div>
-        <div class="hero-decoration hero-decoration-two"></div>
+        <div
+                class="hero-decoration hero-decoration-one"
+                aria-hidden="true"
+        ></div>
+
+        <div
+                class="hero-decoration hero-decoration-two"
+                aria-hidden="true"
+        ></div>
 
         <div class="hero-content">
             <p class="hero-kicker">
@@ -78,7 +85,11 @@
                 </button>
 
                 <span class="online-pill">
-                        <span class="online-dot"></span>
+                        <span
+                                class="online-dot"
+                                aria-hidden="true"
+                        ></span>
+
                         Available online
                     </span>
             </div>
@@ -123,7 +134,10 @@
                 >
             </div>
 
-            <!-- app.js renders the catalog, quiz, and results here -->
+            <!--
+                app.js dynamically renders the reviewer catalog,
+                quiz questions, answer feedback, and results here.
+            -->
             <div
                     id="app"
                     class="app-container"
