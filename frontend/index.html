@@ -2,159 +2,90 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
-    <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, viewport-fit=cover"
-    >
-
-    <meta
-            name="theme-color"
-            content="#9caf88"
-    >
-
-    <meta
-            name="description"
-            content="A personal mobile study reviewer."
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#aebfa2">
+    <meta name="description" content="Study With Jean is a personal reviewer dashboard for focused study sessions.">
     <title>Study With Jean</title>
-
-    <link
-            rel="stylesheet"
-            href="./styles.css?v=20260922-3"
-    >
-
-    <script
-            src="./app.js?v=20260922-3"
-            defer
-    ></script>
+    <link rel="stylesheet" href="./styles.css?v=8">
 </head>
-
 <body>
 <div class="page-shell">
     <header class="topbar">
-        <p class="brand-label">
-            Your personal study space
-        </p>
-
-        <button
-                id="theme-button"
-                class="theme-button"
-                type="button"
-                aria-label="Enable dark mode"
-        >
-            Dark
-        </button>
+        <div class="wordmark"><span class="wordmark-mark">J</span><span>Study With Jean</span></div>
+        <button class="theme-button" id="theme-button" type="button">Dark</button>
     </header>
 
-    <section class="hero">
-        <div
-                class="hero-decoration hero-decoration-one"
-                aria-hidden="true"
-        ></div>
-
-        <div
-                class="hero-decoration hero-decoration-two"
-                aria-hidden="true"
-        ></div>
-
-        <div class="hero-content">
-            <p class="hero-kicker">
-                Study With Jean
-            </p>
-
-            <h1>
-                Small reviews.<br>
-                Big wins.
-            </h1>
-
-            <p class="hero-description">
-                Pick a topic, practice at your own pace,
-                and keep everything ready for the next
-                study session.
-            </p>
-
-            <div class="hero-actions">
-                <button
-                        id="view-reviewers-button"
-                        class="hero-button"
-                        type="button"
-                >
-                    View reviewers
-                </button>
-
-                <span class="online-pill">
-                        <span
-                                class="online-dot"
-                                aria-hidden="true"
-                        ></span>
-
-                        Available online
-                    </span>
-            </div>
-        </div>
-    </section>
-
-    <main class="main-content">
-        <section
-                id="reviewers-section"
-                class="reviewer-section"
-        >
-            <div class="section-heading">
-                <div>
-                    <p class="section-kicker">
-                        Reviewer library
-                    </p>
-
-                    <h2>
-                        Choose what to study
-                    </h2>
+    <main>
+        <section class="welcome-panel">
+            <span class="dot dot-blue" aria-hidden="true"></span>
+            <span class="dot dot-burgundy" aria-hidden="true"></span>
+            <div class="welcome-content">
+                <p class="eyebrow">Your personal study space</p>
+                <h1>What are we studying today?</h1>
+                <p class="welcome-copy">Turn your notes into something easier to review, or jump back into a reviewer you already have.</p>
+                <div class="welcome-actions">
+                    <button class="primary-button" id="uploadButton" type="button">Upload notes</button>
+                    <button class="secondary-button" id="view-reviewers-button" type="button">Browse reviewers</button>
                 </div>
-
-                <span class="section-accent">
-                        Ready
-                    </span>
+                <p class="supported">PDF and PowerPoint first. Photos, audio, and pasted notes can come later.</p>
             </div>
-
-            <div class="search-wrapper">
-                <label
-                        class="visually-hidden"
-                        for="reviewer-search"
-                >
-                    Search reviewers
-                </label>
-
-                <input
-                        id="reviewer-search"
-                        class="search-input"
-                        type="search"
-                        placeholder="Search reviewers..."
-                        autocomplete="off"
-                >
-            </div>
-
-            <!--
-                app.js dynamically renders the reviewer catalog,
-                quiz questions, answer feedback, and results here.
-            -->
-            <div
-                    id="app"
-                    class="app-container"
-                    aria-live="polite"
-            >
-                <section class="status-card">
-                    Loading reviewers...
-                </section>
+            <div class="welcome-art" aria-hidden="true">
+                <div class="floating-card file-card"><strong>Lecture 04.pdf</strong><small>Ready to turn into a reviewer</small></div>
+                <div class="floating-card quiz-card-mini"><strong>Cardiovascular System</strong><small>35 questions · explanations</small></div>
             </div>
         </section>
-    </main>
 
-    <footer class="app-footer">
-        <p>
-            Made for focused study sessions.
-        </p>
-    </footer>
+        <div class="dashboard-grid">
+            <section class="panel">
+                <div class="section-head">
+                    <div><p class="section-kicker">Make something new</p><h2>Add your notes</h2></div>
+                </div>
+                <div class="source-grid">
+                    <button class="source-button active-source" type="button" data-source="PDF"><span class="source-icon">PDF</span><span><span class="source-title">Upload PDF</span><span class="source-note">Lecture notes or readings</span></span></button>
+                    <button class="source-button" type="button" data-source="PowerPoint"><span class="source-icon">PPT</span><span><span class="source-title">PowerPoint</span><span class="source-note">Slides and presentations</span></span></button>
+                    <button class="source-button" type="button" data-source="Photos"><span class="source-icon">IMG</span><span><span class="source-title">Add photos</span><span class="source-note">Planned for later</span></span></button>
+                    <button class="source-button" type="button" data-source="Audio"><span class="source-icon">REC</span><span><span class="source-title">Record audio</span><span class="source-note">Planned for later</span></span></button>
+                </div>
+            </section>
+
+            <section class="panel">
+                <div class="section-head">
+                    <div><p class="section-kicker">Pick up where you stopped</p><h2>Continue studying</h2></div>
+                </div>
+                <article class="empty-card"><h3>Nothing in progress yet</h3><p>Start a reviewer and the latest session will appear here automatically.</p></article>
+            </section>
+        </div>
+
+        <section class="library-section" id="reviewers-section">
+            <div class="section-head">
+                <div><p class="section-kicker">Ready when you are</p><h2>Your reviewers</h2></div>
+                <button class="text-button" type="button" id="seeAllButton">See all</button>
+            </div>
+            <div class="search-row"><input class="search-input" id="reviewer-search" type="search" placeholder="Search your reviewers" aria-label="Search your reviewers"></div>
+            <div id="app" class="reviewer-grid app-container" aria-live="polite"><section class="status-card">Loading reviewers...</section></div>
+        </section>
+
+        <section class="assistant-card">
+            <div><p class="section-kicker">Ask Jean</p><h2>Need something explained?</h2><p>Chat can eventually answer questions using the reviewer you are currently studying.</p></div>
+            <button class="assistant-button" id="askButton" type="button">Ask a question</button>
+        </section>
+    </main>
+    <footer class="footer">Made for focused study sessions.</footer>
 </div>
+
+<div class="sheet" id="uploadSheet" aria-hidden="true">
+    <section class="sheet-card" role="dialog" aria-modal="true" aria-labelledby="uploadTitle">
+        <div class="sheet-top"><div><p class="section-kicker">New reviewer</p><h2 id="uploadTitle">Add your notes</h2></div><button class="close-button" id="closeSheet" type="button" aria-label="Close">X</button></div>
+        <p>Choose a PDF or PowerPoint. This prototype only previews the selection and does not upload anything yet.</p>
+        <label class="upload-zone">
+            <input id="fileInput" type="file" accept=".pdf,.ppt,.pptx">
+            <span><span class="upload-title">Choose a file</span><span class="upload-help">PDF, PPT, or PPTX</span></span>
+        </label>
+        <p class="selected-file" id="selectedFile">No file selected</p>
+    </section>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="./app.js?v=8"></script>
 </body>
 </html>

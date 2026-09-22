@@ -156,19 +156,9 @@ function renderCatalog(catalog) {
 
     const section = document.createElement("section");
 
-    const heading = document.createElement("h2");
-    heading.className = "page-heading";
-    heading.textContent = "Available Reviewers";
-
-    const description = document.createElement("p");
-    description.className = "page-description";
-    description.textContent =
-        "Choose a topic to begin a practice session.";
-
     const list = document.createElement("div");
     list.className = "quiz-list";
 
-    section.append(heading, description);
 
     if (catalog.quizzes.length === 0) {
         const emptyState = document.createElement("div");
@@ -208,7 +198,7 @@ function createQuizCard(quiz) {
     const button = document.createElement("button");
     button.className = "primary-button";
     button.type = "button";
-    button.textContent = "Start Quiz";
+    button.textContent = "Start reviewer";
 
     button.addEventListener("click", () => {
         loadQuiz(quiz);
@@ -569,3 +559,61 @@ if (searchInput) {
         }
     );
 }
+
+// Dashboard controls
+const uploadSheet = document.querySelector("#uploadSheet");
+const uploadButton = document.querySelector("#uploadButton");
+const closeSheetButton = document.querySelector("#closeSheet");
+const fileInput = document.querySelector("#fileInput");
+const selectedFile = document.querySelector("#selectedFile");
+const toast = document.querySelector("#toast");
+let toastTimer;
+
+function showToast(message) {
+    if (!toast) return;
+    clearTimeout(toastTimer);
+    toast.textContent = message;
+    toast.classList.add("show");
+    toastTimer = setTimeout(() => toast.classList.remove("show"), 2400);
+}
+
+function openUpload(source = "notes") {
+    if (!uploadSheet) return;
+    const title = document.querySelector("#uploadTitle");
+    if (title) title.textContent = `Add ${source.toLowerCase()}`;
+    uploadSheet.classList.add("open");
+    uploadSheet.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+}
+
+function closeUpload() {
+    if (!uploadSheet) return;
+    uploadSheet.classList.remove("open");
+    uploadSheet.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+}
+
+uploadButton?.addEventListener("click", () => openUpload("notes"));
+closeSheetButton?.addEventListener("click", closeUpload);
+uploadSheet?.addEventListener("click", event => {
+    if (event.target === uploadSheet) closeUpload();
+});
+document.addEventListener("keydown", event => {
+    if (event.key === "Escape") closeUpload();
+});
+document.querySelectorAll(".source-button").forEach(button => {
+    button.addEventListener("click", () => {
+        const source = button.dataset.source;
+        if (source === "PDF" || source === "PowerPoint") openUpload(source);
+        else showToast(`${source} support is planned for a later phase.`);
+    });
+});
+fileInput?.addEventListener("change", () => {
+    selectedFile.textContent = fileInput.files[0]
+        ? `${fileInput.files[0].name} selected`
+        : "No file selected";
+});
+document.querySelector("#askButton")?.addEventListener("click", () =>
+    showToast("Ask Jean is reserved for a later phase."));
+document.querySelector("#seeAllButton")?.addEventListener("click", () =>
+    showToast("All available reviewers are already shown."));
