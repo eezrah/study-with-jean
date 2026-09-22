@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-22T06:00:00Z",
+  "quizzes": [
+    {
+      "id": "cardiovascular-system",
+      "title": "Cardiovascular System",
+      "subject": "Anatomy and Physiology",
+      "description": "Heart anatomy, blood flow, cardiac output, and circulation.",
+      "questionCount": 3,
+      "version": 1,
+      "file": "./quizzes/cardiovascular-system.json",
+      "features": [
+        "Multiple choice",
+        "Explanations"
+      ]
+    },
+    {
+      "id": "pharmacology-basics",
+      "title": "Pharmacology Basics",
+      "subject": "Pharmacology",
+      "description": "Drug terminology, administration, and fundamental concepts.",
+      "questionCount": 3,
+      "version": 1,
+      "file": "./quizzes/pharmacology-basics.json",
+      "features": [
+        "Multiple choice",
+        "Practice test"
+      ]
+    },
+    {
+      "id": "nervous-system",
+      "title": "Nervous System",
+      "subject": "Anatomy and Physiology",
+      "description": "Neurons, brain structures, and nervous-system divisions.",
+      "questionCount": 3,
+      "version": 1,
+      "file": "./quizzes/nervous-system.json",
+      "features": [
+        "Hints",
+        "Source pages"
+      ]
+    }
+  ]
+}

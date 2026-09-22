@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "id": "pharmacology-basics",
+  "title": "Pharmacology Basics",
+  "subject": "Pharmacology",
+  "description": "Drug terminology, administration, and fundamental concepts.",
+  "version": 1,
+  "updatedAt": "2026-09-22T06:00:00Z",
+  "questions": [
+    {
+      "id": "pharma-q001",
+      "type": "multiple_choice",
+      "prompt": "What does pharmacokinetics describe?",
+      "choices": [
+        "What the drug does to the body",
+        "What the body does to the drug",
+        "How drugs are manufactured",
+        "How prescriptions are priced"
+      ],
+      "correctChoiceIndex": 1,
+      "explanation": "Pharmacokinetics describes how the body absorbs, distributes, metabolizes, and eliminates a drug.",
+      "source": {
+        "page": 3
+      }
+    },
+    {
+      "id": "pharma-q002",
+      "type": "multiple_choice",
+      "prompt": "Which route of administration usually produces the fastest systemic effect?",
+      "choices": [
+        "Oral",
+        "Topical",
+        "Intravenous",
+        "Subcutaneous"
+      ],
+      "correctChoiceIndex": 2,
+      "explanation": "Intravenous administration introduces a drug directly into the bloodstream.",
+      "source": {
+        "page": 7
+      }
+    },
+    {
+      "id": "pharma-q003",
+      "type": "multiple_choice",
+      "prompt": "What is a contraindication?",
+      "choices": [
+        "A reason a drug should not be used",
+        "A desired therapeutic effect",
+        "The generic name of a drug",
+        "The standard dosage interval"
+      ],
+      "correctChoiceIndex": 0,
+      "explanation": "A contraindication is a condition or factor that makes the use of a particular treatment inadvisable.",
+      "source": {
+        "page": 10
+      }
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "id": "nervous-system",
+  "title": "Nervous System",
+  "subject": "Anatomy and Physiology",
+  "description": "Neurons, brain structures, and nervous-system divisions.",
+  "version": 1,
+  "updatedAt": "2026-09-22T06:00:00Z",
+  "questions": [
+    {
+      "id": "nervous-q001",
+      "type": "multiple_choice",
+      "prompt": "What is the basic functional unit of the nervous system?",
+      "choices": [
+        "Neuron",
+        "Nephron",
+        "Alveolus",
+        "Osteocyte"
+      ],
+      "correctChoiceIndex": 0,
+      "explanation": "The neuron is the basic structural and functional unit of the nervous system.",
+      "source": {
+        "page": 5
+      }
+    },
+    {
+      "id": "nervous-q002",
+      "type": "multiple_choice",
+      "prompt": "Which structures make up the central nervous system?",
+      "choices": [
+        "Brain and peripheral nerves",
+        "Brain and spinal cord",
+        "Spinal cord and cranial nerves",
+        "Brain and autonomic nerves"
+      ],
+      "correctChoiceIndex": 1,
+      "explanation": "The central nervous system consists of the brain and spinal cord.",
+      "source": {
+        "page": 8
+      }
+    },
+    {
+      "id": "nervous-q003",
+      "type": "multiple_choice",
+      "prompt": "Which part of a neuron typically receives signals from other neurons?",
+      "choices": [
+        "Axon terminal",
+        "Myelin sheath",
+        "Dendrite",
+        "Node of Ranvier"
+      ],
+      "correctChoiceIndex": 2,
+      "explanation": "Dendrites typically receive incoming chemical or electrical signals from other neurons.",
+      "source": {
+        "page": 11
+      }
+    }
+  ]
+}
+``

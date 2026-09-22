@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "id": "cardiovascular-system",
+  "title": "Cardiovascular System",
+  "subject": "Anatomy and Physiology",
+  "description": "Heart anatomy, blood flow, cardiac output, and circulation.",
+  "version": 1,
+  "updatedAt": "2026-09-22T06:00:00Z",
+  "questions": [
+    {
+      "id": "cardio-q001",
+      "type": "multiple_choice",
+      "prompt": "Which chamber pumps oxygenated blood into systemic circulation?",
+      "choices": [
+        "Left atrium",
+        "Right atrium",
+        "Left ventricle",
+        "Right ventricle"
+      ],
+      "correctChoiceIndex": 2,
+      "explanation": "The left ventricle pumps oxygenated blood through the aorta and into systemic circulation.",
+      "source": {
+        "page": 14
+      }
+    },
+    {
+      "id": "cardio-q002",
+      "type": "multiple_choice",
+      "prompt": "Which vessels return oxygenated blood from the lungs to the heart?",
+      "choices": [
+        "Pulmonary arteries",
+        "Pulmonary veins",
+        "Coronary arteries",
+        "Venae cavae"
+      ],
+      "correctChoiceIndex": 1,
+      "explanation": "The pulmonary veins carry oxygenated blood from the lungs to the left atrium.",
+      "source": {
+        "page": 16
+      }
+    },
+    {
+      "id": "cardio-q003",
+      "type": "multiple_choice",
+      "prompt": "How is cardiac output calculated?",
+      "choices": [
+        "Blood pressure multiplied by heart rate",
+        "Heart rate multiplied by stroke volume",
+        "Stroke volume divided by heart rate",
+        "Systolic pressure minus diastolic pressure"
+      ],
+      "correctChoiceIndex": 1,
+      "explanation": "Cardiac output is calculated by multiplying heart rate by stroke volume.",
+      "source": {
+        "page": 20
+      }
+    }
+  ]
+}

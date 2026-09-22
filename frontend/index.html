@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, viewport-fit=cover"
+    >
+
+    <meta
+            name="theme-color"
+            content="#718466"
+    >
+
+    <meta
+            name="description"
+            content="A personal mobile study reviewer."
+    >
+
+    <title>Study With Jean</title>
+
+    <link
+            rel="stylesheet"
+            href="./styles.css"
+    >
+
+    <script
+            src="./app.js"
+            defer
+    ></script>
+</head>
+
+<body>
+<div class="page-shell">
+    <header class="topbar">
+        <p class="brand-label">
+            Your personal study space
+        </p>
+
+        <button
+                id="theme-button"
+                class="theme-button"
+                type="button"
+                aria-label="Enable dark mode"
+        >
+            Dark
+        </button>
+    </header>
+
+    <section class="hero">
+        <div class="hero-decoration hero-decoration-one"></div>
+        <div class="hero-decoration hero-decoration-two"></div>
+
+        <div class="hero-content">
+            <p class="hero-kicker">
+                Study With Jean
+            </p>
+
+            <h1>
+                Small reviews.<br>
+                Big wins.
+            </h1>
+
+            <p class="hero-description">
+                Pick a topic, practice at your own pace,
+                and keep everything ready for the next
+                study session.
+            </p>
+
+            <div class="hero-actions">
+                <button
+                        id="view-reviewers-button"
+                        class="hero-button"
+                        type="button"
+                >
+                    View reviewers
+                </button>
+
+                <span class="online-pill">
+                        <span class="online-dot"></span>
+                        Available online
+                    </span>
+            </div>
+        </div>
+    </section>
+
+    <main class="main-content">
+        <section
+                id="reviewers-section"
+                class="reviewer-section"
+        >
+            <div class="section-heading">
+                <div>
+                    <p class="section-kicker">
+                        Reviewer library
+                    </p>
+
+                    <h2>
+                        Choose what to study
+                    </h2>
+                </div>
+
+                <span class="section-accent">
+                        Ready
+                    </span>
+            </div>
+
+            <div class="search-wrapper">
+                <label
+                        class="visually-hidden"
+                        for="reviewer-search"
+                >
+                    Search reviewers
+                </label>
+
+                <input
+                        id="reviewer-search"
+                        class="search-input"
+                        type="search"
+                        placeholder="Search reviewers..."
+                        autocomplete="off"
+                >
+            </div>
+
+            <!-- app.js renders the catalog, quiz, and results here -->
+            <div
+                    id="app"
+                    class="app-container"
+                    aria-live="polite"
+            >
+                <section class="status-card">
+                    Loading reviewers...
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <p>
+            Made for focused study sessions.
+        </p>
+    </footer>
+</div>
+</body>
+</html>
