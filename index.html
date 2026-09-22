@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, viewport-fit=cover"
+    >
+
+    <meta name="theme-color" content="#8f6bb5">
+
+    <title>Study With Jean</title>
+
+    <style>
+        :root {
+            --background: #fff8fc;
+            --surface: #ffffff;
+            --surface-transparent: rgba(255, 255, 255, 0.92);
+
+            --text: #392a3f;
+            --muted: #826f86;
+
+            --primary: #9467b5;
+            --primary-dark: #744d91;
+            --primary-soft: #eee5f7;
+
+            --accent: #f0aac3;
+            --accent-soft: #fdeaf1;
+
+            --success: #427b5a;
+            --success-soft: #e7f5ec;
+
+            --error: #a74357;
+            --error-soft: #fce8ed;
+
+            --border: #eaddea;
+
+            --shadow:
+                    0 16px 40px
+                    rgba(93, 54, 104, 0.12);
+
+            --small-radius: 12px;
+            --medium-radius: 18px;
+            --large-radius: 28px;
+
+            --content-width: 760px;
+        }
+
+        body.dark {
+            --background: #1d1721;
+            --surface: #2a202f;
+            --surface-transparent: rgba(42, 32, 47, 0.94);
+
+            --text: #f8eef8;
+            --muted: #c4aec7;
+
+            --primary: #c59ae1;
+            --primary-dark: #dfc0f1;
+            --primary-soft: #403149;
+
+            --accent: #ed9ebe;
+            --accent-soft: #4a2c3c;
+
+            --success: #97d5ae;
+            --success-soft: #233e2d;
+
+            --error: #efa0ae;
+            --error-soft: #4a2931;
+
+            --border: #4a3b50;
+
+            --shadow:
+                    0 16px 40px
+                    rgba(0, 0, 0, 0.28);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            background:
+                    radial-gradient(
+                            circle at 15% 5%,
+                            rgba(242, 169, 193, 0.28),
+                            transparent 28rem
+                    ),
+                    radial-gradient(
+                            circle at 90% 12%,
+                            rgba(150, 104, 183, 0.18),
+                            transparent 30rem
+                    ),
+                    var(--background);
+
+            color: var(--text);
+
+            font-family:
+                    Inter,
+                    Aptos,
+                    system-ui,
+                    -apple-system,
+                    BlinkMacSystemFont,
+                    "Segoe UI",
+                    sans-serif;
+
+            line-height: 1.5;
+
+            transition:
+                    background 180ms ease,
+                    color 180ms ease;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        button {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .app-shell {
+            width: min(100%, var(--content-width));
+            margin: 0 auto;
+
+            padding:
+                    env(safe-area-inset-top)
+                    18px
+                    calc(100px + env(safe-area-inset-bottom));
+        }
+
+        /* Header */
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 22px 2px 14px;
+        }
+
+        .brand-small {
+            margin: 0;
+
+            color: var(--muted);
+
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+        }
+
+        .icon-button {
+            min-width: 46px;
+            height: 46px;
+            padding: 0 12px;
+
+            border: 1px solid var(--border);
+            border-radius: 999px;
+
+            background: var(--surface);
+            color: var(--text);
+
+            font-size: 0.8rem;
+            font-weight: 800;
+
+            cursor: pointer;
+
+            box-shadow:
+                    0 8px 22px
+                    rgba(89, 56, 99, 0.08);
+        }
+
+        /* Hero */
+
+        .hero {
+            position: relative;
+
+            overflow: hidden;
+
+            padding: 28px;
+
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 32px;
+
+            background:
+                    linear-gradient(
+                            135deg,
+                            #8c63ab,
+                            #bf88b7 58%,
+                            #f3adbf
+                    );
+
+            color: #ffffff;
+
+            box-shadow: var(--shadow);
+        }
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+            right: -62px;
+            bottom: -90px;
+
+            width: 190px;
+            height: 190px;
+
+            border-radius: 50%;
+
+            background: rgba(255, 255, 255, 0.17);
+        }
+
+        .hero-kicker {
+            margin: 0 0 8px;
+
+            font-size: 0.82rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+
+            opacity: 0.85;
+        }
+
+        .hero h1 {
+            max-width: 520px;
+
+            margin: 0;
+
+            font-size: clamp(2.1rem, 10vw, 3.6rem);
+            line-height: 1.03;
+            letter-spacing: -0.04em;
+        }
+
+        .hero-copy {
+            max-width: 500px;
+
+            margin: 14px 0 23px;
+
+            line-height: 1.55;
+
+            opacity: 0.92;
+        }
+
+        .hero-row {
+            position: relative;
+            z-index: 2;
+
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+
+            gap: 12px;
+        }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+
+            padding: 10px 13px;
+
+            border-radius: 999px;
+
+            background: rgba(255, 255, 255, 0.17);
+
+            font-size: 0.84rem;
+            font-weight: 700;
+        }
+
+        /* Shared buttons */
+
+        .primary-button,
+        .secondary-button {
+            min-height: 48px;
+            padding: 0 18px;
+
+            border-radius: 15px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+        }
+
+        .primary-button {
+            border: 0;
+
+            background: var(--primary);
+            color: #ffffff;
+
+            box-shadow:
+                    0 8px 18px
+                    rgba(117, 80, 146, 0.22);
+        }
+
+        .primary-button:hover {
+            background: var(--primary-dark);
+        }
+
+        .hero .primary-button {
+            background: #ffffff;
+            color: #76518e;
+        }
+
+        .hero .primary-button:hover {
+            background: #fff5fb;
+        }
+
+        .secondary-button {
+            border: 1px solid var(--border);
+
+            background: var(--surface);
+            color: var(--primary-dark);
+        }
+
+        /* Sections */
+
+        .section {
+            margin-top: 28px;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+
+            gap: 14px;
+
+            margin-bottom: 13px;
+        }
+
+        .section-heading h2 {
+            margin: 0;
+
+            font-size: 1.3rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-heading p {
+            margin: 3px 0 0;
+
+            color: var(--muted);
+
+            font-size: 0.86rem;
+        }
+
+        /* Progress */
+
+        .progress-card,
+        .quiz-card,
+        .flashcard {
+            border: 1px solid var(--border);
+
+            background: var(--surface-transparent);
+
+            box-shadow: var(--shadow);
+        }
+
+        .progress-card {
+            padding: 20px;
+
+            border-radius: var(--large-radius);
+        }
+
+        .progress-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 15px;
+        }
+
+        .progress-card h3 {
+            margin: 0;
+
+            font-size: 1.05rem;
+        }
+
+        .progress-card p {
+            margin: 5px 0 0;
+
+            color: var(--muted);
+
+            font-size: 0.9rem;
+        }
+
+        .progress-number {
+            color: var(--primary-dark);
+
+            font-size: 1.3rem;
+            font-weight: 900;
+        }
+
+        .progress-track {
+            height: 12px;
+
+            margin-top: 16px;
+
+            overflow: hidden;
+
+            border-radius: 999px;
+
+            background: var(--primary-soft);
+        }
+
+        .progress-fill {
+            width: 68%;
+            height: 100%;
+
+            border-radius: inherit;
+
+            background:
+                    linear-gradient(
+                            90deg,
+                            var(--primary),
+                            var(--accent)
+                    );
+        }
+
+        /* Search */
+
+        .search-box {
+            width: 100%;
+            min-height: 52px;
+
+            padding: 0 17px;
+
+            border: 1px solid var(--border);
+            border-radius: 16px;
+
+            outline: none;
+
+            background: var(--surface);
+            color: var(--text);
+
+            box-shadow:
+                    0 8px 24px
+                    rgba(73, 47, 80, 0.06);
+        }
+
+        .search-box:focus {
+            border-color: var(--primary);
+        }
+
+        /* Reviewer cards */
+
+        .quiz-grid {
+            display: grid;
+
+            gap: 14px;
+
+            margin-top: 14px;
+        }
+
+        .quiz-card {
+            display: grid;
+            grid-template-columns: auto 1fr;
+
+            gap: 15px;
+
+            padding: 18px;
+
+            border-radius: var(--large-radius);
+
+            transition:
+                    transform 160ms ease,
+                    border-color 160ms ease;
+        }
+
+        .quiz-card:hover {
+            transform: translateY(-2px);
+
+            border-color: var(--accent);
+        }
+
+        .subject-mark {
+            display: grid;
+            place-items: center;
+
+            width: 52px;
+            height: 52px;
+
+            border-radius: 17px;
+
+            background: var(--accent-soft);
+            color: var(--primary-dark);
+
+            font-size: 1.4rem;
+            font-weight: 900;
+        }
+
+        .quiz-card-main h3 {
+            margin: 1px 0 4px;
+
+            font-size: 1.04rem;
+        }
+
+        .quiz-meta {
+            margin: 0;
+
+            color: var(--muted);
+
+            font-size: 0.86rem;
+        }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 7px;
+
+            margin-top: 11px;
+        }
+
+        .tag {
+            padding: 5px 9px;
+
+            border-radius: 999px;
+
+            background: var(--primary-soft);
+            color: var(--primary-dark);
+
+            font-size: 0.74rem;
+            font-weight: 800;
+        }
+
+        .quiz-actions {
+            grid-column: 1 / -1;
+
+            display: grid;
+            grid-template-columns: 1fr auto;
+
+            gap: 9px;
+        }
+
+        .download-button {
+            min-width: 62px;
+            min-height: 48px;
+
+            border: 1px solid var(--border);
+            border-radius: 15px;
+
+            background: var(--surface);
+            color: var(--primary-dark);
+
+            font-size: 0.8rem;
+            font-weight: 800;
+
+            cursor: pointer;
+        }
+
+        .download-button.downloaded {
+            border-color: #a7d5b6;
+
+            background: var(--success-soft);
+            color: var(--success);
+        }
+
+        /* Flashcard */
+
+        .flashcard {
+            display: grid;
+            place-content: center;
+
+            min-height: 230px;
+
+            padding: 26px;
+
+            border-radius: var(--large-radius);
+
+            text-align: center;
+
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .flashcard-label {
+            margin: 0 0 12px;
+
+            color: var(--primary);
+
+            font-size: 0.78rem;
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .flashcard-text {
+            margin: 0;
+
+            font-size: clamp(1.35rem, 6vw, 2rem);
+            font-weight: 850;
+            line-height: 1.25;
+        }
+
+        .flashcard-hint {
+            margin: 16px 0 0;
+
+            color: var(--muted);
+
+            font-size: 0.86rem;
+        }
+
+        /* Bottom navigation */
+
+        .bottom-nav {
+            position: fixed;
+            z-index: 20;
+            left: 50%;
+            bottom: max(14px, env(safe-area-inset-bottom));
+
+            transform: translateX(-50%);
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            width: min(calc(100% - 28px), 560px);
+
+            padding: 8px;
+
+            border: 1px solid var(--border);
+            border-radius: 22px;
+
+            background: var(--surface-transparent);
+
+            backdrop-filter: blur(18px);
+
+            box-shadow: var(--shadow);
+        }
+
+        .nav-button {
+            min-height: 52px;
+
+            border: 0;
+            border-radius: 15px;
+
+            background: transparent;
+            color: var(--muted);
+
+            font-size: 0.78rem;
+            font-weight: 800;
+
+            cursor: pointer;
+        }
+
+        .nav-button.active {
+            background: var(--primary-soft);
+            color: var(--primary-dark);
+        }
+
+        /* Quiz modal */
+
+        .modal {
+            position: fixed;
+            z-index: 50;
+            inset: 0;
+
+            display: none;
+            place-items: center;
+
+            padding: 18px;
+
+            background: rgba(38, 24, 43, 0.56);
+
+            backdrop-filter: blur(8px);
+        }
+
+        .modal.open {
+            display: grid;
+        }
+
+        .quiz-modal-card {
+            width: min(100%, 600px);
+            max-height: min(90vh, 760px);
+
+            overflow: auto;
+
+            padding: 24px;
+
+            border: 1px solid var(--border);
+            border-radius: var(--large-radius);
+
+            background: var(--surface);
+            color: var(--text);
+
+            box-shadow: var(--shadow);
+        }
+
+        .modal-top {
+            display: flex;
+            align-items: start;
+            justify-content: space-between;
+
+            gap: 16px;
+        }
+
+        .modal-top h2 {
+            margin: 0;
+        }
+
+        .modal-top p {
+            margin: 5px 0 0;
+
+            color: var(--muted);
+        }
+
+        .close-button {
+            flex: 0 0 auto;
+
+            width: 42px;
+            height: 42px;
+
+            border: 1px solid var(--border);
+            border-radius: 50%;
+
+            background: var(--surface);
+            color: var(--text);
+
+            font-weight: 800;
+
+            cursor: pointer;
+        }
+
+        .question-number {
+            margin: 24px 0 8px;
+
+            color: var(--primary);
+
+            font-size: 0.8rem;
+            font-weight: 900;
+        }
+
+        .question {
+            margin: 0 0 18px;
+
+            font-size: 1.25rem;
+            line-height: 1.35;
+        }
+
+        .choice-list {
+            display: grid;
+
+            gap: 10px;
+        }
+
+        .choice {
+            width: 100%;
+            min-height: 52px;
+
+            padding: 12px 14px;
+
+            border: 1px solid var(--border);
+            border-radius: 15px;
+
+            background: var(--surface);
+            color: var(--text);
+
+            text-align: left;
+
+            cursor: pointer;
+        }
+
+        .choice:hover:not(:disabled) {
+            border-color: var(--primary);
+
+            background: var(--primary-soft);
+        }
+
+        .choice:disabled {
+            cursor: default;
+        }
+
+        .choice.correct {
+            border-color: #8bc19e;
+
+            background: var(--success-soft);
+            color: var(--success);
+        }
+
+        .choice.wrong {
+            border-color: #dd97a8;
+
+            background: var(--error-soft);
+            color: var(--error);
+        }
+
+        .feedback {
+            display: none;
+
+            margin-top: 16px;
+            padding: 15px;
+
+            border-radius: 15px;
+
+            background: var(--primary-soft);
+
+            line-height: 1.5;
+        }
+
+        .feedback.show {
+            display: block;
+        }
+
+        /* Toast notification */
+
+        .toast {
+            position: fixed;
+            z-index: 80;
+            left: 50%;
+            bottom: 92px;
+
+            transform: translate(-50%, 20px);
+
+            width: min(calc(100% - 36px), 440px);
+
+            padding: 13px 16px;
+
+            border-radius: 15px;
+
+            background: #36263b;
+            color: #ffffff;
+
+            text-align: center;
+            font-weight: 700;
+
+            opacity: 0;
+            pointer-events: none;
+
+            transition:
+                    opacity 180ms ease,
+                    transform 180ms ease;
+        }
+
+        .toast.show {
+            transform: translate(-50%, 0);
+
+            opacity: 1;
+        }
+
+        .empty-state {
+            padding: 20px;
+
+            border: 1px solid var(--border);
+            border-radius: var(--medium-radius);
+
+            background: var(--surface);
+
+            color: var(--muted);
+        }
+
+        @media (min-width: 640px) {
+            .quiz-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero {
+                padding: 36px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="app-shell">
+    <header class="topbar">
+        <p class="brand-small">
+            Your personal study space
+        </p>
+
+        <button
+                id="theme-button"
+                class="icon-button"
+                type="button"
+                aria-label="Enable dark mode"
+        >
+            Dark
+        </button>
+    </header>
+
+    <main>
+        <section class="hero">
+            <p class="hero-kicker">
+                Study With Jean
+            </p>
+
+            <h1>
+                Small reviews. Big wins.
+            </h1>
+
+            <p class="hero-copy">
+                A cute little reviewer made just for you.
+                Pick a topic, practice at your own pace,
+                and keep everything ready for the next
+                study session.
+            </p>
+
+            <div class="hero-row">
+                <button
+                        id="continue-button"
+                        class="primary-button"
+                        type="button"
+                >
+                    Continue studying
+                </button>
+
+                <span class="status-pill">
+                        Available online
+                    </span>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-heading">
+                <div>
+                    <h2>Your progress</h2>
+
+                    <p>
+                        Sample data for the prototype
+                    </p>
+                </div>
+            </div>
+
+            <article class="progress-card">
+                <div class="progress-top">
+                    <div>
+                        <h3>Weekly goal</h3>
+
+                        <p>
+                            17 of 25 practice questions answered
+                        </p>
+                    </div>
+
+                    <div class="progress-number">
+                        68%
+                    </div>
+                </div>
+
+                <div
+                        class="progress-track"
+                        role="progressbar"
+                        aria-label="Weekly progress"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                        aria-valuenow="68"
+                >
+                    <div class="progress-fill"></div>
+                </div>
+            </article>
+        </section>
+
+        <section
+                id="reviewers-section"
+                class="section"
+        >
+            <div class="section-heading">
+                <div>
+                    <h2>Reviewers</h2>
+
+                    <p>
+                        Choose what you want to study
+                    </p>
+                </div>
+            </div>
+
+            <input
+                    id="search-box"
+                    class="search-box"
+                    type="search"
+                    placeholder="Search topics..."
+                    aria-label="Search reviewers"
+            >
+
+            <div
+                    id="quiz-grid"
+                    class="quiz-grid"
+            ></div>
+        </section>
+
+        <section
+                id="flashcard-section"
+                class="section"
+        >
+            <div class="section-heading">
+                <div>
+                    <h2>Quick flashcard</h2>
+
+                    <p>
+                        Tap the card to reveal the answer
+                    </p>
+                </div>
+            </div>
+
+            <article
+                    id="flashcard"
+                    class="flashcard"
+                    role="button"
+                    tabindex="0"
+                    aria-label="Tap to reveal the answer"
+            >
+                <div>
+                    <p
+                            id="flashcard-label"
+                            class="flashcard-label"
+                    >
+                        Question
+                    </p>
+
+                    <p
+                            id="flashcard-text"
+                            class="flashcard-text"
+                    >
+                        What is cardiac output?
+                    </p>
+
+                    <p class="flashcard-hint">
+                        Tap to flip
+                    </p>
+                </div>
+            </article>
+        </section>
+    </main>
+</div>
+
+<nav
+        class="bottom-nav"
+        aria-label="Primary navigation"
+>
+    <button
+            class="nav-button active"
+            type="button"
+            data-target="top"
+    >
+        Home
+    </button>
+
+    <button
+            class="nav-button"
+            type="button"
+            data-target="reviewers-section"
+    >
+        Reviewers
+    </button>
+
+    <button
+            class="nav-button"
+            type="button"
+            data-target="flashcard-section"
+    >
+        Flashcards
+    </button>
+</nav>
+
+<div
+        id="quiz-modal"
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="quiz-title"
+>
+    <article class="quiz-modal-card">
+        <div class="modal-top">
+            <div>
+                <h2 id="quiz-title">
+                    Cardiovascular System
+                </h2>
+
+                <p>
+                    Prototype practice question
+                </p>
+            </div>
+
+            <button
+                    id="close-modal"
+                    class="close-button"
+                    type="button"
+                    aria-label="Close quiz"
+            >
+                X
+            </button>
+        </div>
+
+        <p class="question-number">
+            Question 1 of 10
+        </p>
+
+        <h3 class="question">
+            Which chamber pumps oxygenated blood
+            into systemic circulation?
+        </h3>
+
+        <div
+                id="choice-list"
+                class="choice-list"
+        >
+            <button
+                    class="choice"
+                    type="button"
+                    data-index="0"
+            >
+                Left atrium
+            </button>
+
+            <button
+                    class="choice"
+                    type="button"
+                    data-index="1"
+            >
+                Right atrium
+            </button>
+
+            <button
+                    class="choice"
+                    type="button"
+                    data-index="2"
+            >
+                Left ventricle
+            </button>
+
+            <button
+                    class="choice"
+                    type="button"
+                    data-index="3"
+            >
+                Right ventricle
+            </button>
+        </div>
+
+        <div
+                id="feedback"
+                class="feedback"
+                aria-live="polite"
+        ></div>
+    </article>
+</div>
+
+<div
+        id="toast"
+        class="toast"
+        role="status"
+        aria-live="polite"
+></div>
+
+<script>
+    "use strict";
+
+    const quizzes = [
+        {
+            id: "cardio",
+            mark: "C",
+            title: "Cardiovascular System",
+            subject: "Anatomy and Physiology",
+            questionCount: 35,
+            status: "Ready to study",
+            tags: [
+                "Multiple choice",
+                "Explanations"
+            ]
+        },
+        {
+            id: "pharma",
+            mark: "P",
+            title: "Pharmacology Basics",
+            subject: "Pharmacology",
+            questionCount: 42,
+            status: "New reviewer",
+            tags: [
+                "Flashcards",
+                "Practice test"
+            ]
+        },
+        {
+            id: "nervous",
+            mark: "N",
+            title: "Nervous System",
+            subject: "Anatomy and Physiology",
+            questionCount: 28,
+            status: "12 questions completed",
+            tags: [
+                "Hints",
+                "Source pages"
+            ]
+        }
+    ];
+
+    const quizGrid =
+        document.querySelector("#quiz-grid");
+
+    const searchBox =
+        document.querySelector("#search-box");
+
+    const quizModal =
+        document.querySelector("#quiz-modal");
+
+    const quizTitle =
+        document.querySelector("#quiz-title");
+
+    const closeModalButton =
+        document.querySelector("#close-modal");
+
+    const themeButton =
+        document.querySelector("#theme-button");
+
+    const continueButton =
+        document.querySelector("#continue-button");
+
+    const flashcard =
+        document.querySelector("#flashcard");
+
+    const flashcardLabel =
+        document.querySelector("#flashcard-label");
+
+    const flashcardText =
+        document.querySelector("#flashcard-text");
+
+    const toast =
+        document.querySelector("#toast");
+
+    let flashcardFlipped = false;
+    let toastTimer;
+
+    function renderQuizzes(searchValue = "") {
+        quizGrid.replaceChildren();
+
+        const normalizedSearch =
+            searchValue.trim().toLowerCase();
+
+        const filteredQuizzes =
+            quizzes.filter((quiz) => {
+                const searchableText = [
+                    quiz.title,
+                    quiz.subject,
+                    quiz.status,
+                    ...quiz.tags
+                ]
+                    .join(" ")
+                    .toLowerCase();
+
+                return searchableText.includes(
+                    normalizedSearch
+                );
+            });
+
+        if (filteredQuizzes.length === 0) {
+            const emptyMessage =
+                document.createElement("div");
+
+            emptyMessage.className = "empty-state";
+
+            emptyMessage.textContent =
+                "No reviewers match that search yet.";
+
+            quizGrid.append(emptyMessage);
+
+            return;
+        }
+
+        filteredQuizzes.forEach((quiz) => {
+            quizGrid.append(
+                createQuizCard(quiz)
+            );
+        });
+    }
+
+    function createQuizCard(quiz) {
+        const card =
+            document.createElement("article");
+
+        card.className = "quiz-card";
+
+        const subjectMark =
+            document.createElement("div");
+
+        subjectMark.className = "subject-mark";
+        subjectMark.textContent = quiz.mark;
+
+        const main =
+            document.createElement("div");
+
+        main.className = "quiz-card-main";
+
+        const title =
+            document.createElement("h3");
+
+        title.textContent = quiz.title;
+
+        const metadata =
+            document.createElement("p");
+
+        metadata.className = "quiz-meta";
+
+        metadata.textContent =
+            `${quiz.subject} · ` +
+            `${quiz.questionCount} questions · ` +
+            quiz.status;
+
+        const tagRow =
+            document.createElement("div");
+
+        tagRow.className = "tag-row";
+
+        quiz.tags.forEach((tagText) => {
+            const tag =
+                document.createElement("span");
+
+            tag.className = "tag";
+            tag.textContent = tagText;
+
+            tagRow.append(tag);
+        });
+
+        main.append(
+            title,
+            metadata,
+            tagRow
+        );
+
+        const actions =
+            document.createElement("div");
+
+        actions.className = "quiz-actions";
+
+        const startButton =
+            document.createElement("button");
+
+        startButton.className = "primary-button";
+        startButton.type = "button";
+        startButton.textContent = "Start reviewer";
+
+        startButton.addEventListener(
+            "click",
+            () => openQuiz(quiz)
+        );
+
+        const downloadButton =
+            document.createElement("button");
+
+        downloadButton.className =
+            "download-button";
+
+        downloadButton.type = "button";
+        downloadButton.textContent = "Save";
+
+        downloadButton.setAttribute(
+            "aria-label",
+            `Save ${quiz.title} for offline use`
+        );
+
+        downloadButton.addEventListener(
+            "click",
+            () => toggleMockDownload(
+                quiz,
+                downloadButton
+            )
+        );
+
+        actions.append(
+            startButton,
+            downloadButton
+        );
+
+        card.append(
+            subjectMark,
+            main,
+            actions
+        );
+
+        return card;
+    }
+
+    function toggleMockDownload(
+        quiz,
+        downloadButton
+    ) {
+        downloadButton.classList.toggle(
+            "downloaded"
+        );
+
+        const isDownloaded =
+            downloadButton.classList.contains(
+                "downloaded"
+            );
+
+        downloadButton.textContent =
+            isDownloaded ? "Saved" : "Save";
+
+        const message = isDownloaded
+            ? `${quiz.title} was marked as downloaded.`
+            : `${quiz.title} was removed from downloads.`;
+
+        showToast(message);
+    }
+
+    function openQuiz(quiz) {
+        quizTitle.textContent = quiz.title;
+
+        resetQuestion();
+
+        quizModal.classList.add("open");
+
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeQuiz() {
+        quizModal.classList.remove("open");
+
+        document.body.style.overflow = "";
+    }
+
+    function resetQuestion() {
+        const choices =
+            document.querySelectorAll(".choice");
+
+        choices.forEach((choice) => {
+            choice.disabled = false;
+
+            choice.classList.remove(
+                "correct",
+                "wrong"
+            );
+        });
+
+        const feedback =
+            document.querySelector("#feedback");
+
+        feedback.classList.remove("show");
+        feedback.textContent = "";
+    }
+
+    function handleAnswer(selectedChoice) {
+        const selectedIndex =
+            Number(selectedChoice.dataset.index);
+
+        const correctIndex = 2;
+
+        const choices =
+            document.querySelectorAll(".choice");
+
+        choices.forEach((choice, index) => {
+            choice.disabled = true;
+
+            if (index === correctIndex) {
+                choice.classList.add("correct");
+            }
+        });
+
+        const feedback =
+            document.querySelector("#feedback");
+
+        if (selectedIndex === correctIndex) {
+            feedback.textContent =
+                "Correct. The left ventricle " +
+                "pumps oxygenated blood into the " +
+                "aorta and systemic circulation.";
+        } else {
+            selectedChoice.classList.add("wrong");
+
+            feedback.textContent =
+                "Not quite. The left ventricle " +
+                "is connected to the aorta, which " +
+                "supplies systemic circulation.";
+        }
+
+        feedback.classList.add("show");
+    }
+
+    function flipFlashcard() {
+        flashcardFlipped = !flashcardFlipped;
+
+        if (flashcardFlipped) {
+            flashcardLabel.textContent =
+                "Answer";
+
+            flashcardText.textContent =
+                "Heart rate multiplied by stroke volume.";
+
+            flashcard.setAttribute(
+                "aria-label",
+                "Answer: Heart rate multiplied by stroke volume"
+            );
+        } else {
+            flashcardLabel.textContent =
+                "Question";
+
+            flashcardText.textContent =
+                "What is cardiac output?";
+
+            flashcard.setAttribute(
+                "aria-label",
+                "Question: What is cardiac output?"
+            );
+        }
+    }
+
+    function toggleTheme() {
+        document.body.classList.toggle("dark");
+
+        const darkModeEnabled =
+            document.body.classList.contains(
+                "dark"
+            );
+
+        themeButton.textContent =
+            darkModeEnabled ? "Light" : "Dark";
+
+        themeButton.setAttribute(
+            "aria-label",
+            darkModeEnabled
+                ? "Enable light mode"
+                : "Enable dark mode"
+        );
+    }
+
+    function showToast(message) {
+        clearTimeout(toastTimer);
+
+        toast.textContent = message;
+        toast.classList.add("show");
+
+        toastTimer = setTimeout(() => {
+            toast.classList.remove("show");
+        }, 2600);
+    }
+
+    searchBox.addEventListener(
+        "input",
+        () => renderQuizzes(searchBox.value)
+    );
+
+    document
+        .querySelector("#choice-list")
+        .addEventListener(
+            "click",
+            (event) => {
+                const selectedChoice =
+                    event.target.closest(".choice");
+
+                if (!selectedChoice) {
+                    return;
+                }
+
+                handleAnswer(selectedChoice);
+            }
+        );
+
+    closeModalButton.addEventListener(
+        "click",
+        closeQuiz
+    );
+
+    quizModal.addEventListener(
+        "click",
+        (event) => {
+            if (event.target === quizModal) {
+                closeQuiz();
+            }
+        }
+    );
+
+    document.addEventListener(
+        "keydown",
+        (event) => {
+            if (
+                event.key === "Escape" &&
+                quizModal.classList.contains("open")
+            ) {
+                closeQuiz();
+            }
+        }
+    );
+
+    flashcard.addEventListener(
+        "click",
+        flipFlashcard
+    );
+
+    flashcard.addEventListener(
+        "keydown",
+        (event) => {
+            if (
+                event.key === "Enter" ||
+                event.key === " "
+            ) {
+                event.preventDefault();
+
+                flipFlashcard();
+            }
+        }
+    );
+
+    continueButton.addEventListener(
+        "click",
+        () => {
+            document
+                .querySelector("#reviewers-section")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+        }
+    );
+
+    themeButton.addEventListener(
+        "click",
+        toggleTheme
+    );
+
+    document
+        .querySelectorAll(".nav-button")
+        .forEach((button) => {
+            button.addEventListener(
+                "click",
+                () => {
+                    document
+                        .querySelectorAll(
+                            ".nav-button"
+                        )
+                        .forEach((navButton) => {
+                            navButton.classList.remove(
+                                "active"
+                            );
+                        });
+
+                    button.classList.add("active");
+
+                    const target =
+                        button.dataset.target;
+
+                    if (target === "top") {
+                        window.scrollTo({
+                            top: 0,
+                            behavior: "smooth"
+                        });
+
+                        return;
+                    }
+
+                    document
+                        .querySelector(`#${target}`)
+                        .scrollIntoView({
+                            behavior: "smooth"
+                        });
+                }
+            );
+        });
+
+    renderQuizzes();
+</script>
+</body>
+</html>
